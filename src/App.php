@@ -6,6 +6,8 @@ namespace Zxin\PhpEnv;
 
 use League\Container\Container;
 use Symfony\Component\Console\Application;
+use Zxin\PhpEnv\Command\LibInstallManage;
+use Zxin\PhpEnv\Command\PhpManage;
 
 final class App
 {
@@ -18,6 +20,14 @@ final class App
      * @var Container
      */
     private $container;
+
+    /**
+     * @var string[]
+     */
+    private $commands = [
+        PhpManage::class,
+        LibInstallManage::class,
+    ];
 
     public static function getInstance(): App
     {
@@ -38,7 +48,11 @@ final class App
     private function initConsole()
     {
         $this->container->add(Application::class, function () {
-            return new Application('phpEnv', '1.0.0');
+            $console = new Application('phpEnv', '1.0.0');
+            foreach ($this->commands as $command) {
+                $console->add(new $command());
+            }
+            return $console;
         })->setAlias('console');
     }
 
