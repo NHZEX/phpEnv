@@ -10,13 +10,14 @@
         "files": []
     },
     "require": {
-        "php": "^7.1|^8.0",
-        "symfony/process": "^5.2",
-        "symfony/console": "^5.2",
+        "php": "^7.2|^8.0",
         "guzzlehttp/guzzle": "^7.2",
+        "league/container": "^3.3",
+        "symfony/console": "^5.2",
         "symfony/polyfill-php72": "^1.22",
         "symfony/polyfill-php73": "^1.22",
-        "symfony/polyfill-php80": "^1.22"
+        "symfony/polyfill-php80": "^1.22",
+        "symfony/process": "^5.2"
     },
     "config": {
         "preferred-install": "dist",
