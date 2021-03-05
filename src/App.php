@@ -31,6 +31,7 @@ final class App
     private function __construct()
     {
         $this->container = new Container();
+        $this->container->defaultToShared();
         $this->initConsole();
     }
 
